@@ -1,7 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using Scrum_Mvc_GroupProject.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<ForumDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("ForumConStr")));
+
 
 var app = builder.Build();
 
