@@ -45,6 +45,18 @@ namespace Scrum_Mvc_GroupProject.Controllers
             _context.SaveChanges();
             return RedirectToAction(nameof(Index));
         }
-
+        [HttpGet]
+        public IActionResult Delete(int id) 
+        {
+            var category = _context.ForumCategories.FirstOrDefault(c => c.Id == id);
+            return View(category);
+        }
+        [HttpPost]
+        public IActionResult Delete(ForumCategory category) 
+        {
+            _context.ForumCategories.Remove(category);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
