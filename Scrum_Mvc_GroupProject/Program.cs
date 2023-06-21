@@ -27,6 +27,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Reacties}/{action=Index}/{id?}");
+    pattern: "{controller=DiscussieThreads}/{action=Index}/{id?}");
 
 app.Run();
