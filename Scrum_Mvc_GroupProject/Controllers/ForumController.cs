@@ -13,7 +13,7 @@ namespace Scrum_Mvc_GroupProject.Controllers
         }
         public IActionResult Index()
         {
-            var getCategories = _context.ForumCategories.ToList().FirstOrDefault();
+            var getCategories = _context.ForumCategories.ToList();
             return View(getCategories);
         }
         public IActionResult Create()
