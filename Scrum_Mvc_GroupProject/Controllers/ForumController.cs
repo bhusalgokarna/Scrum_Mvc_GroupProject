@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Scrum_Mvc_GroupProject.Data;
 using Scrum_Mvc_GroupProject.Models;
 
@@ -32,6 +31,19 @@ namespace Scrum_Mvc_GroupProject.Controllers
             }
             return RedirectToAction("Index");
           
+        }
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var category = _context.ForumCategories.FirstOrDefault(c => c.Id == id);
+            return View(category);
+        }
+        [HttpPost]
+        public IActionResult Edit(ForumCategory category)
+        {
+            _context.ForumCategories.Update(category);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
         }
 
     }
