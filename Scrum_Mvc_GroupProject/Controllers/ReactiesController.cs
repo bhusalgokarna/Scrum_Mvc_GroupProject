@@ -37,6 +37,37 @@ namespace Scrum_Mvc_GroupProject.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
-      
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var reactie = _context.Reacties.FirstOrDefault(c => c.Id == id);
+            ViewBag.discussie = new SelectList(_context.DiscussieThreads.ToList(), "Id", "Comentaar");
+            return View(reactie);
+        }
+        [HttpPost]
+        public IActionResult Edit(Reactie reactie)
+        {
+            if (reactie != null)
+            {
+                _context.Reacties.Update(reactie);
+                _context.SaveChanges();
+            }
+            return RedirectToAction(nameof(Index));
+        }
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var reactie = _context.Reacties.FirstOrDefault(c => c.Id == id);
+            //ViewBag.discussie = new SelectList(_context.DiscussieThreads.ToList(), "Id", "Comentaar");
+            return View(reactie);
+        }
+        [HttpPost]
+        public IActionResult Delete(Reactie reactie)
+        {
+            _context.Reacties.Remove(reactie);
+            _context.SaveChanges();
+            return RedirectToAction(nameof(Index));
+        }
+
     }
 }
