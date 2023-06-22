@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Scrum_Mvc_GroupProject.Data;
 using Scrum_Mvc_GroupProject.Models;
+using System.Threading;
 
 namespace Scrum_Mvc_GroupProject.Controllers
 {
@@ -22,18 +23,18 @@ namespace Scrum_Mvc_GroupProject.Controllers
         [HttpGet]
         public IActionResult Create()
         {
-            ViewBag.forum= new SelectList(_context.ForumCategories.ToList(), "Id", "Naam");
+            ViewBag.forum = new SelectList(_context.ForumCategories.ToList(), "Id", "Naam");
             return View();
         }
         [HttpPost]
         public IActionResult Create(DiscussieThread thread)
         {
-            if (thread != null) 
+            if (thread != null)
             {
                 _context.DiscussieThreads.Add(thread);
                 _context.SaveChanges();
             }
-           return RedirectToAction("Index");
+            return RedirectToAction("Index");
         }
         public IActionResult Search(string SearchString)
         {
