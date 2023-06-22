@@ -19,9 +19,12 @@
 		<tr>
 			@foreach (var item in Model)
 			{
-				<td>@item.Id</td>
+				<td>@item.forumCategory.Naam</td>
 				<td>@item.Comentaar</td>
 			}			
 		</tr>
 	</tbody>
 	</table>
+<div>
+	<button type="button" class="btn btn-outline-dark" onclick="location.href='@Url.Action("Index", "Forum")'">Terug naar Thread</button>
+</div>

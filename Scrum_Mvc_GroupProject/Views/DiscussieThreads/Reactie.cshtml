@@ -1,3 +1,25 @@
 ﻿@model IEnumerable<Reactie>
 
 	<h3>Reacties Of This Thread</h3>
+
+	<table class="table">
+		<thead>
+			<tr>
+			<th>Thread</th>
+			<th>Reactie</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+				@foreach (var item in Model)
+			{
+			<tr>
+				<td>@item.discussieThread.Comentaar</td>
+				<td>@item.Comentaar</td>
+			</tr>
+			}			
+		</tbody>	
+	</table>
+	<div>
+    <button type="button" class="btn btn-outline-dark" onclick="location.href='@Url.Action("Index", "DiscussieThreads")'">Terug naar Threads</button>
+   </div>

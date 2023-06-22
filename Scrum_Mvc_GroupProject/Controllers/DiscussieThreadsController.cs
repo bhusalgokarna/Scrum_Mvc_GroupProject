@@ -38,13 +38,13 @@ namespace Scrum_Mvc_GroupProject.Controllers
         }
         public IActionResult Search(string SearchString)
         {
-            var getSearchString = _context.DiscussieThreads.Where(d => d.Comentaar.Contains(SearchString));
+            var getSearchString = _context.DiscussieThreads.Where(d => d.Comentaar.Contains(SearchString)).Include(f=>f.forumCategory);
             return View(getSearchString);
         }
 
         public IActionResult Reactie(int id)
         {
-            var getAllreactie=_context.Reacties.Where(r=>r.DiscussieThreadId==id).ToList();
+            var getAllreactie=_context.Reacties.Where(r=>r.DiscussieThreadId==id).Include(d=>d.discussieThread).ToList();
             return View(getAllreactie);
         }
     }
