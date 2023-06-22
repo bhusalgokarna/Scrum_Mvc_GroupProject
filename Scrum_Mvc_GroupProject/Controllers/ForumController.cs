@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Scrum_Mvc_GroupProject.Data;
 using Scrum_Mvc_GroupProject.Models;
 
@@ -13,7 +14,7 @@ namespace Scrum_Mvc_GroupProject.Controllers
         }
         public IActionResult Index()
         {
-            var getCategories = _context.ForumCategories.ToList();
+            var getCategories = _context.ForumCategories.Include(i=>i.discussies).ToList();
             return View(getCategories);
         }
         [HttpGet]
