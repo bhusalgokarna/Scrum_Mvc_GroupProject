@@ -1,0 +1,27 @@
+﻿@model IEnumerable<DiscussieThread>
+
+	<h2 style="text-decoration:blink">Your Searched result:</h2>
+<br>
+<br>
+<br>
+	<table class="table">
+		<thead>
+		<tr>
+			<th scope="col">
+			<h3>Discussie Over</h3>
+		</th>
+		<th scope="col">
+			<h3>Author</h3>
+		</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			@foreach (var item in Model)
+			{
+				<td>@item.Id</td>
+				<td>@item.Comentaar</td>
+			}			
+		</tr>
+	</tbody>
+	</table>

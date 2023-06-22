@@ -15,7 +15,7 @@ namespace Scrum_Mvc_GroupProject.Controllers
         }
         public IActionResult Index()
         {
-            var getAllDiscussie=_context.DiscussieThreads.Include(f=>f.forumCategory).ToList();
+            var getAllDiscussie=_context.DiscussieThreads.Include(f=>f.forumCategory).Include(r=>r.Reacties).ToList();
             return View(getAllDiscussie);
         }
 
@@ -34,6 +34,17 @@ namespace Scrum_Mvc_GroupProject.Controllers
                 _context.SaveChanges();
             }
            return RedirectToAction("Index");
+        }
+        public IActionResult Search(string SearchString)
+        {
+            var getSearchString = _context.DiscussieThreads.Where(d => d.Comentaar.Contains(SearchString));
+            return View(getSearchString);
+        }
+
+        public IActionResult Reactie(int id)
+        {
+            var getAllreactie=_context.Reacties.Where(r=>r.DiscussieThreadId==id).ToList();
+            return View(getAllreactie);
         }
     }
 }
