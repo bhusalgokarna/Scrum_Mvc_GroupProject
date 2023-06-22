@@ -14,6 +14,9 @@ html {
 }
 
 body {
+    font-size:medium;
+    font:bold;
+   /* background-image:url("forum-450x225.jpg");*/
     background-color:aquamarine;   
     margin-bottom: 60px;
 }
