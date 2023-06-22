@@ -41,6 +41,9 @@
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
+            <td>
+                    <button type="button" class="btn btn-outline-dark" onclick="location.href='@Url.Action("Index", "DiscussieThreads")'">Ga naar Discussies</button>
+            </td>
         </tr>
 }
     </tbody>
