@@ -35,5 +35,11 @@ namespace Scrum_Mvc_GroupProject.Controllers
             }
            return RedirectToAction("Index");
         }
+
+        public IActionResult DiscussiesLijst(int id)
+        {
+            var getAllDiscussie = _context.DiscussieThreads.Include(f => f.forumCategory).Where(i=>i.ForumCategoryId == id).ToList();
+            return View(getAllDiscussie);
+        }
     }
 }
