@@ -50,5 +50,8 @@
     </tbody>
 </table>
 <div>
-    <button type="button" class="btn btn-outline-dark" onclick="location.href='@Url.Action("Index", "Forum")'">Terug naar Forum</button>
+    <a type="button" class="btn btn-outline-dark"
+       asp-controller="Forum" action="Index">
+        Ga naar Forum
+    </a>
 </div>
