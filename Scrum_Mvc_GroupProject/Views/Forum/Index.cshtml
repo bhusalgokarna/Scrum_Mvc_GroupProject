@@ -25,7 +25,7 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@foreach (var item in Model.OrderByDescending(x=>x.discussies.Count)) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Naam)
